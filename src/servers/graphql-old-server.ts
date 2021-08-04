@@ -215,14 +215,14 @@ const resolvers = {
   Mutation: {
     requestPhoneCodeGeetest: async (
       _,
-      { phone, captchaChallenge, captchaValidate, captchaSeccode },
+      { phone, geetestChallenge, geetestValidate, geetestSeccode },
       { logger, ip },
     ) => ({
       success: await requestPhoneCodeGeetest({
         phone,
-        captchaChallenge,
-        captchaValidate,
-        captchaSeccode,
+        geetestChallenge,
+        geetestValidate,
+        geetestSeccode,
         logger,
         ip,
       }),
