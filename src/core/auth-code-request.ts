@@ -40,7 +40,7 @@ export const verifyCaptchaAndReturnOTP = async ({
     })
   }
 
-  return await requestPhoneCode({
+  return requestPhoneCode({
     phone,
     logger,
     ip,

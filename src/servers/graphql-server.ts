@@ -46,6 +46,8 @@ export const startApolloServer = async ({
   port,
   startSubscriptionServer = false,
 }): Promise<Record<string, unknown>> => {
+  const geeTestConfig = getGeeTestConfig()
+  const geetest = GeeTest(geeTestConfig)
   const app = express()
   const apolloServer = new ApolloServer({
     schema,
@@ -65,10 +67,6 @@ export const startApolloServer = async ({
 
       // TODO move from id: uuidv4() to a Jaeger standard
       const logger = graphqlLogger.child({ token, id: uuidv4(), body: context.req?.body })
-
-      const geeTestConfig = getGeeTestConfig()
-
-      const geetest = GeeTest(geeTestConfig)
 
       if (uid) {
         user = await User.findOneAndUpdate(
